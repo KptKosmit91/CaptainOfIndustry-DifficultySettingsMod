@@ -14,7 +14,7 @@ using System.Reflection;
 namespace DifficultySettingsMod
 {
 	internal enum SettingType
-    {
+	{
 		GameDifficultyConfig,
 		IslandMapDifficultyConfig
 	}
