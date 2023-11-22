@@ -77,7 +77,7 @@ namespace DifficultySettingsMod
 			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.PowerProductionDiffInfo), startValue: -80, endValue: 500, step: 10,
 				additionalOptions: new Percent[] { 1000.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ConstructionCostsDiffInfo), startValue: -95, endValue: 100, step: 5,
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ConstructionCostsDiffInfo), startValue: -100, endValue: 100, step: 5,
 				additionalOptions: new Percent[] { 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent() });
 
 
