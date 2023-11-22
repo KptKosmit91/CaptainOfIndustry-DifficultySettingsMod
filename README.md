@@ -5,7 +5,7 @@ What i would recommend doing if you want to use this mod, is create a "dummy sav
 
 **NOTE:** you DON'T actually have to include the mod for saves with custom settings - the selected settings are saved in the savefile and will work without the mod!
 
-Like i said, the mod is quite janky due to what i mentioned above and the way that the settings are updated in the code. Expect the mod to break with game updates, I will try to fix it when possible if it breaks.
+The mod is quite janky due to what i mentioned above and the way that the settings are updated in the code. Expect the mod to break with game updates, I will try to fix it when possible if it breaks.
 And remember, things may break when you set the value too high/low, especially with cliff/resource height settings!
 
 ![Image](https://github.com/KptKosmit91/CaptainOfIndustry-DifficultySettingsMod/blob/main/Images/img1.png?raw=true)
