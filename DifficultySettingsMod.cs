@@ -127,7 +127,7 @@ namespace DifficultySettingsMod
 				throw new InvalidOperationException($"<color=#ff0000>Incorrect PatchOptionsListAuto setup for {diffInfoName}. `step` cannot be equal to 0</color>");
 			}
 
-			if (step == 0)
+			if (step < 0)
 			{
 				throw new InvalidOperationException($"<color=#ff0000>Incorrect PatchOptionsListAuto setup for {diffInfoName}. `step` cannot be negative</color>");
 			}
