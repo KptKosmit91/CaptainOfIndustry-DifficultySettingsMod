@@ -15,8 +15,7 @@ namespace DifficultySettingsMod
 {
 	internal enum SettingType
 	{
-		GameDifficultyConfig,
-		IslandMapDifficultyConfig
+		GameDifficultyConfig
 	}
 
 	public sealed class DifficultySettingsMod : IMod
@@ -29,7 +28,9 @@ namespace DifficultySettingsMod
 
 		public bool IsUiOnly => true; // true i guess? 
 
-        public DifficultySettingsMod(CoreMod coreMod, BaseMod baseMod)
+		public Option<IConfig> ModConfig => Option<IConfig>.None;
+
+        public DifficultySettingsMod()
 		{
 			if (Applied == true)
 			{
@@ -61,63 +62,55 @@ namespace DifficultySettingsMod
 			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.BaseHealthDiffInfo), startValue: -50, endValue: 1000, step: 25);
 			
 			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ResourceMiningDiffInfo), startValue: -50, endValue: 2500, step: 50, 
-				additionalOptions: new Percent[] { -10.Percent(), 10.Percent(), 30.Percent(), 3000.Percent(), 3500.Percent(), 4000.Percent(), 5000.Percent() }); // additionals for compatibility with vanilla + new
+				additionalOptions: new Percent[] {-75.Percent(), -25.Percent(), -15.Percent(), -10.Percent(), 10.Percent(), 15.Percent(), 25.Percent(), 30.Percent(), 3000.Percent(), 3500.Percent(), 4000.Percent(), 5000.Percent() }); // additionals for compatibility with vanilla + new
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SettlementConsumptionDiffInfo), startValue: -100, endValue: 200, step: 20,
-				additionalOptions: new Percent[] { -99.Percent() });
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SettlementConsumptionDiffInfo), startValue: -100, endValue: 300, step: 10,
+				additionalOptions: new Percent[] { -99.Percent(), 400.Percent(), 500.Percent() });
 
 			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.WorldMinesReservesInfo), startValue: -100, endValue: 250, step: 10, 
 				additionalOptions: new Percent[] { -99.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent(), 5000.Percent(), Percent.MaxValue });
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.FarmYieldInfo), startValue: -90, endValue: 200, step: 10);
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.FarmYieldInfo), startValue: -90, endValue: 400, step: 10,
+                additionalOptions: new Percent[] { 500.Percent(), 750.Percent(), 1000.Percent(), 1500.Percent(), 2000.Percent()});
 
 			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.UnityProductionDiffInfo), startValue: -90, endValue: 200, step: 10,
 				additionalOptions: new Percent[] { -99.Percent(), 220.Percent(), 240.Percent(), 260.Percent(), 280.Percent(), 300.Percent(), 350.Percent(), 400.Percent(), 500.Percent(), 1000.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.PowerProductionDiffInfo), startValue: -80, endValue: 500, step: 10,
-				additionalOptions: new Percent[] { 1000.Percent() });
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SolarPowerDiffInfo), startValue: -80, endValue: 500, step: 10,
+				additionalOptions: new Percent[] { -25.Percent(), 25.Percent(), 1000.Percent() });
 
 			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ConstructionCostsDiffInfo), startValue: -100, endValue: 100, step: 5,
 				additionalOptions: new Percent[] { 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent() });
+			
 
 
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ResearchCostDiffInfo), startValue: -100, endValue: 100, step: 5,
+				additionalOptions: new Percent[] { -99.Percent(), 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent() });
+			
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.DiseaseMortalityDiffInfo), startValue: -100, endValue: 100, step: 5,
+				additionalOptions: new Percent[] { -99.Percent(), 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent() });
+			
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.PollutionDiffInfo), startValue: -100, endValue: 200, step: 5,
+				additionalOptions: new Percent[] { -99.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent(), 5000.Percent(), 100000.Percent() });
+            
+			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.QuickActionsCostInfo), startValue: -100, endValue: 200, step: 5,
+                additionalOptions: new Percent[] { -99.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent() });
 
+            /*
 			PatchOptionsListAuto(SettingType.IslandMapDifficultyConfig, nameof(IslandMapDifficultyConfig.MineableResourceSizeBonusInfo), startValue: -1000, endValue: 1000, step: 10,
 				additionalOptions: new Percent[] { -25.Percent(), 25.Percent() }); // vanilla compat
 
 			PatchOptionsListAuto(SettingType.IslandMapDifficultyConfig, nameof(IslandMapDifficultyConfig.CellHeightsBiasInfo), startValue: -1000, endValue: 1000, step: 10,
 				additionalOptions: new Percent[] { -25.Percent(), 25.Percent() }); // vanilla compat
-
-
-			// testing
-			/*
-			PatchOptionsList(SettingType.DifficultyConfig, nameof(GameDifficultyConfig.ExtraStartingMaterialInfo),
-				0.Percent(),
-				10.Percent(),
-				20.Percent(),
-				30.Percent(),
-				40.Percent(),
-				50.Percent(),
-				60.Percent(),
-				70.Percent(),
-				80.Percent()
-				);
-
-			PatchOptionsList(SettingType.DifficultyConfig, nameof(GameDifficultyConfig.BaseHealthDiffInfo),
-				0.Percent(),
-				420.Percent(),
-				666.Percent(),
-				420691337.Percent()
-				);
 			*/
 
-
-			Log.Info($"{Name}: setting patches applied");
+            Log.Info($"{Name}: setting patches applied");
 
 			Applied = true;
 
+			// not needed as of Update 2. this means that this mod is active at all times now.
 			// 1000 iq
-			throw new Exception("<color=#00ff00>Intentional crash, new setting values now available in the New Game menu!</color>");
+			//throw new Exception("<color=#00ff00>Intentional crash, new setting values now available in the New Game menu!</color>");
 		}
 
 		private void PatchOptionsListAuto(SettingType settingType, string diffInfoName, int startValue = 0, int endValue = 100, int step = 10, Percent[] additionalOptions = null)
@@ -157,13 +150,7 @@ namespace DifficultySettingsMod
 			Mafi.Log.Info($"Applying patches to {settingType}.{diffInfoName}");
 
 			Type type = typeof(GameDifficultyConfig);
-			Type diffType = typeof(DiffSettingInfo<Percent, GameDifficultyConfig>);
-
-			if(settingType == SettingType.IslandMapDifficultyConfig)
-            {
-				type = typeof(IslandMapDifficultyConfig);
-				diffType = typeof(DiffSettingInfo<Percent, IslandMapDifficultyConfig>);
-			}
+			Type diffType = typeof(DiffSettingInfo<Percent>);
 
 
 			var diffInfoField = type.GetField(diffInfoName,
@@ -197,6 +184,10 @@ namespace DifficultySettingsMod
         }
 
         public void Initialize(DependencyResolver resolver, bool gameWasLoaded)
+        {
+        }
+
+        public void EarlyInit(DependencyResolver resolver)
         {
         }
     }
