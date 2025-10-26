@@ -24,7 +24,7 @@ namespace DifficultySettingsMod
 
 		public string Name => "KK91 - Difficulty Settings Mod";
 
-		public int Version => 1;
+		public int Version => 2;
 
 		public bool IsUiOnly => true; // true i guess? 
 
@@ -43,57 +43,60 @@ namespace DifficultySettingsMod
 
 			Log.Info($"{Name}: will apply diff setting patches");
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ExtraContractsProfitInfo), startValue: 0, endValue: 1000, step: 20,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ExtraContractsProfitInfo), startValue: 0, endValue: 1000, step: 20,
 				additionalOptions: new Percent[] { 10.Percent(), 30.Percent() }); // additionals for compatibility with vanilla
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.TreesGrowthInfo), startValue: -90, endValue: 200, step: 10,
-				additionalOptions: new Percent[] { 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent(), 3000.Percent(), 5000.Percent() } );
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.TreesGrowthInfo), startValue: -90, endValue: 200, step: 10,
+				additionalOptions: new Percent[] { -50.Percent(), -25.Percent(), 25.Percent(), 50.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent(), 3000.Percent(), 5000.Percent() } );
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ExtraStartingMaterialInfo), startValue: 0, endValue: 1000, step: 20);
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ExtraStartingMaterialInfo), startValue: 0, endValue: 1000, step: 20);
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.MaintenanceDiffInfo), startValue: -100, endValue: 200, step: 10,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.MaintenanceDiffInfo), startValue: -100, endValue: 200, step: 10,
 				additionalOptions: new Percent[] { -99.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.FuelConsumptionDiffInfo), startValue: -100, endValue: 100, step: 10,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.FuelConsumptionDiffInfo), startValue: -100, endValue: 100, step: 10,
 				additionalOptions: new Percent[] { -99.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.RainYieldDiffInfo), startValue: -90, endValue: 1000, step: 10);
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.RainYieldDiffInfo), startValue: -90, endValue: 1000, step: 10);
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.BaseHealthDiffInfo), startValue: -50, endValue: 1000, step: 25);
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.BaseHealthDiffInfo), startValue: -50, endValue: 1000, step: 25);
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ResourceMiningDiffInfo), startValue: -50, endValue: 2500, step: 50, 
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ResourceMiningDiffInfo), startValue: -50, endValue: 2500, step: 50, 
 				additionalOptions: new Percent[] {-75.Percent(), -25.Percent(), -15.Percent(), -10.Percent(), 10.Percent(), 15.Percent(), 25.Percent(), 30.Percent(), 3000.Percent(), 3500.Percent(), 4000.Percent(), 5000.Percent() }); // additionals for compatibility with vanilla + new
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SettlementConsumptionDiffInfo), startValue: -100, endValue: 300, step: 10,
-				additionalOptions: new Percent[] { -99.Percent(), 400.Percent(), 500.Percent() });
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SettlementConsumptionDiffInfo), startValue: -100, endValue: 300, step: 10,
+				additionalOptions: new Percent[] { -99.Percent(), 400.Percent(), 500.Percent(), 750.Percent(), 1000.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.WorldMinesReservesInfo), startValue: -100, endValue: 250, step: 10, 
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SettlementFoodConsumptionDiff), startValue: -100, endValue: 300, step: 10,
+				additionalOptions: new Percent[] { -99.Percent(), 400.Percent(), 500.Percent(), 750.Percent(), 1000.Percent() });
+
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.WorldMinesReservesInfo), startValue: -100, endValue: 250, step: 10, 
 				additionalOptions: new Percent[] { -99.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent(), 5000.Percent(), Percent.MaxValue });
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.FarmYieldInfo), startValue: -90, endValue: 400, step: 10,
-                additionalOptions: new Percent[] { 500.Percent(), 750.Percent(), 1000.Percent(), 1500.Percent(), 2000.Percent()});
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.FarmYieldInfo), startValue: -90, endValue: 400, step: 10,
+                additionalOptions: new Percent[] { -50.Percent(), -25.Percent(), 25.Percent(), 50.Percent(), 500.Percent(), 750.Percent(), 1000.Percent(), 1500.Percent(), 2000.Percent()});
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.UnityProductionDiffInfo), startValue: -90, endValue: 200, step: 10,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.UnityProductionDiffInfo), startValue: -90, endValue: 200, step: 10,
 				additionalOptions: new Percent[] { -99.Percent(), 220.Percent(), 240.Percent(), 260.Percent(), 280.Percent(), 300.Percent(), 350.Percent(), 400.Percent(), 500.Percent(), 1000.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SolarPowerDiffInfo), startValue: -80, endValue: 500, step: 10,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.SolarPowerDiffInfo), startValue: -80, endValue: 500, step: 10,
 				additionalOptions: new Percent[] { -25.Percent(), 25.Percent(), 1000.Percent() });
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ConstructionCostsDiffInfo), startValue: -100, endValue: 100, step: 5,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ConstructionCostsDiffInfo), startValue: -100, endValue: 100, step: 5,
 				additionalOptions: new Percent[] { 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent() });
 			
 
 
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ResearchCostDiffInfo), startValue: -100, endValue: 100, step: 5,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.ResearchCostDiffInfo), startValue: -100, endValue: 100, step: 5,
 				additionalOptions: new Percent[] { -99.Percent(), 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent() });
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.DiseaseMortalityDiffInfo), startValue: -100, endValue: 100, step: 5,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.DiseaseMortalityDiffInfo), startValue: -100, endValue: 100, step: 5,
 				additionalOptions: new Percent[] { -99.Percent(), 120.Percent(), 140.Percent(), 160.Percent(), 180.Percent(), 200.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent() });
 			
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.PollutionDiffInfo), startValue: -100, endValue: 200, step: 5,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.PollutionDiffInfo), startValue: -100, endValue: 200, step: 5,
 				additionalOptions: new Percent[] { -99.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent(), 5000.Percent(), 100000.Percent() });
             
-			PatchOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.QuickActionsCostInfo), startValue: -100, endValue: 200, step: 5,
+			UpdateOptionsListAuto(SettingType.GameDifficultyConfig, nameof(GameDifficultyConfig.QuickActionsCostInfo), startValue: -100, endValue: 200, step: 5,
                 additionalOptions: new Percent[] { -99.Percent(), 250.Percent(), 300.Percent(), 400.Percent(), 500.Percent(), 1000.Percent(), 2000.Percent() });
 
             /*
@@ -113,7 +116,7 @@ namespace DifficultySettingsMod
 			//throw new Exception("<color=#00ff00>Intentional crash, new setting values now available in the New Game menu!</color>");
 		}
 
-		private void PatchOptionsListAuto(SettingType settingType, string diffInfoName, int startValue = 0, int endValue = 100, int step = 10, Percent[] additionalOptions = null)
+		private void UpdateOptionsListAuto(SettingType settingType, string diffInfoName, int startValue = 0, int endValue = 100, int step = 10, Percent[] additionalOptions = null)
 		{
 			if (step == 0)
 			{
@@ -142,12 +145,12 @@ namespace DifficultySettingsMod
             }
 
 			// order the array so it all appears properly in the dropdown list
-			PatchOptionsList(settingType, diffInfoName, percents.OrderBy(x => x.RawValue).ToArray());
+			UpdateOptionsList(settingType, diffInfoName, percents.OrderBy(x => x.RawValue).ToArray());
 		}
 
-		private void PatchOptionsList(SettingType settingType, string diffInfoName, params Percent[] newOptions)
+		private void UpdateOptionsList(SettingType settingType, string diffInfoName, params Percent[] newOptions)
         {
-			Mafi.Log.Info($"Applying patches to {settingType}.{diffInfoName}");
+			Mafi.Log.Info($"Applying updates to {settingType}.{diffInfoName}");
 
 			Type type = typeof(GameDifficultyConfig);
 			Type diffType = typeof(DiffSettingInfo<Percent>);
