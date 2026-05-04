@@ -9,6 +9,7 @@ namespace DifficultySettingsMod
 {
     internal static class Utility
     {
+        /*
         public static void SetProperty(string propName, object objectInstance, object value)
         {
             PropertyInfo propertyInfo = objectInstance.GetType().GetProperty(propName,
@@ -25,5 +26,6 @@ namespace DifficultySettingsMod
 
             propertyInfo.SetValue(objectInstance, value);
         }
+        */
     }
 }
